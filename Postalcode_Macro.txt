@@ -1,0 +1,34 @@
+Sub Postcode_Macro()
+
+Dim value As Variant
+Dim check As Variant
+Dim l As Integer
+Dim str As Variant
+Dim getCode As Variant
+
+LR = Cells(Rows.Count, count_col).End(xlUp).Row
+        
+For i = 2To LR
+
+    
+    value = " "
+    check = " "
+    getCode = " "
+    value = Worksheets("BLANK").Range("r" & i).value
+    
+    For j = 2 To 16831
+        
+        check = Worksheets("POSTCODE").Range("a" & j).value
+        If InStr(value, check) > 0 Then
+             getCode = check
+            Exit For
+            
+        End If
+        
+    Next j
+
+    Worksheets("BLANK").Range("p" & i) = getCode
+    
+Next i
+
+End Sub

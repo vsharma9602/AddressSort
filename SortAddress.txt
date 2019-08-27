@@ -1,0 +1,52 @@
+Sub sortAddress()
+
+
+Dim value As Variant
+Dim count As Integer
+Dim l As Integer
+Dim str As Variant
+
+LR = Cells(Rows.Count, count_col).End(xlUp).Row
+
+For i = 2 To LR 
+
+    count = 0
+    l = 0
+    str = " "
+
+    value = Range("a" & i).value
+    
+    ReDim UMParray(Len(value))
+    ReDim Address(Len(value))
+    
+    For j = 0 To Len(value)
+        UMParray(j) = Mid(value, j + 1, 1)
+    Next j
+    
+    'For k = 0 To Len(value)
+    
+    While UMParray(count) <> " "
+        count = count + 1
+    Wend
+    
+    While UMParray(count) = " "
+        count = count + 1
+    Wend
+    
+    While UMParray(count) <> ","
+        Address(l) = UMParray(count)
+        count = count + 1
+        l = l + 1
+    Wend
+    
+    For k = 0 To Len(value)
+    
+        str = str + Address(k)
+        
+    Next k
+    
+    Range("b" & i).value = str
+    
+Next i
+
+End Sub

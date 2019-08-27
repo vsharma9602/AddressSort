@@ -1,0 +1,33 @@
+Sub City()
+
+Dim value As Variant
+Dim check As Variant
+Dim l As Integer
+Dim str As Variant
+
+LR = Cells(Rows.Count, count_col).End(xlUp).Row
+
+        
+For i = 2 To LR
+
+    
+    value = " "
+    check = " "
+    value = Worksheets("100ACC").Range("q" & i).value
+    
+    For j = 2 To 16831
+        
+        check = Worksheets("CITY").Range("a" & j).value
+        If InStr(value, check) > 0 Then
+             getCity = check
+            Exit For
+            
+        End If
+        
+    Next j
+
+    Worksheets("100ACC").Range("K" & i) = getCity
+    
+Next i
+
+End Sub
